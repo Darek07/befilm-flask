@@ -1,0 +1,39 @@
+
+{% if chosen == 'Public' or chosen == 'Ratings' %}
+    {% set url = url_for('movies.public_movie', nickname=movie.user.nickname, title=movie.title) %}
+{% elif chosen == 'Create Report' %}
+    {% set url = url_for('admin.create_report', nickname=movie.user.nickname, title=movie.title) %}
+{% else %}
+    {% set url = url_for('movies.private_movie', title=movie.title) %}
+{% endif %}
+
+<a href="{{ url }}">
+    <div class="note">
+        <ul>
+            <li class="title">
+                {{ movie.title[:40] + ('...' if movie.title|length >= 40 else '') }}
+            </li>
+            <li>{{ movie.premiere }}</li>
+            <li>{{ movie.country }}</li>
+            {% if movie.is_public %}
+                <li>@{{ movie.user.nickname }}</li>
+            {% endif %}
+            {% if chosen == 'Ratings' %}
+                <li>Likes: {{ movie.sum_likes if movie.sum_likes else 0 }}</li>
+            {% endif %}
+        </ul>
+        {% if chosen == 'To Watch' %}
+            <p>{{ movie.genre.name }}</p>
+        {% else %}
+            <p>{{ movie.description[:110] + ('...' if movie.description|length >= 110 else '') }}</p>
+        {% endif %}
+
+        {% if chosen == 'Public' or chosen == 'Create Report' or chosen == 'Ratings' %}
+            <div>{{ movie.post_date.strftime('%H:%M %d.%m.%Y') }}</div>
+        {% elif movie.is_public %}
+            <div>Public</div>
+        {% else %}
+            <div>Private</div>
+        {% endif %}
+    </div>
+</a>

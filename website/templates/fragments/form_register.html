@@ -1,0 +1,27 @@
+<div class="login-form">
+    <form method="post">
+        <input name="nickname"
+             type="text"
+             autocomplete="off"
+             placeholder="Nickname"
+             value="{{ nickname }}">
+
+        <input name="email"
+             type="text"
+             autocomplete="off"
+             placeholder="Email"
+             value="{{ email }}">
+
+        <input name="password"
+             type="password"
+             autocomplete="off"
+             placeholder="Password">
+
+        <input name="submit" type="submit" value="Sign up">
+        {% with errors = get_flashed_messages(category_filter=['error']) %}
+        {% if errors %}
+            <div class="text-danger">{{ errors[0] }}</div>
+        {% endif %}
+        {% endwith %}
+    </form>
+</div>

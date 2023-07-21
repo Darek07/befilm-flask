@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}: Watched{% endblock %}
+
+{% block body %}
+    {% include 'fragments/bar_top.html' %}
+    {% include 'fragments/bar_left.html' %}
+    <div class="content">
+        {% block content %}
+            {% include 'fragments/form_search.html' %}
+            {% if not movies %}
+                <div class="vertical-center">
+                    <h1>
+                        There are no records in '{{ chosen }}' category yet.
+                    </h1>
+                </div>
+            {% endif %}
+            {% for movie in movies %}
+                {% include 'fragments/record.html' %}
+            {% endfor %}
+        {% endblock %}
+    </div>
+{% endblock %}

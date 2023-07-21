@@ -1,0 +1,75 @@
+{% extends 'records.html' %}
+
+{% block title %}: New Movie {% endblock %}
+
+{% block content %}
+    <div class="film">
+        <form method="post" id="new-movie" enctype="multipart/form-data">
+            <div class="desc-left">
+                <textarea class="new-title" name="title" placeholder="Movie">{{ title }}</textarea>
+
+                <h3>Premiere:</h3>
+                <input name="premiere" type="number" min="1900" max="2100" placeholder="Premiere" value="{{ premiere }}">
+
+                <h3>Country:</h3>
+                <input name="country" type="text" placeholder="Country" value="{{ country }}">
+
+                <h3>Genre:</h3>
+                <input name="genre" list="genres" placeholder="Choose genre" value="{{ genre }}">
+                <datalist id="genres">
+                    {% for gen in genres %}
+                        <option value="{{ gen }}">{{ gen }}</option>
+                    {% endfor %}
+                </datalist>
+
+                <h3>Description:</h3>
+                <textarea name="description" placeholder="Write your own description">{{ description }}</textarea>
+
+                <div>
+                    <h3>Authors</h3>
+                    <textarea name="authors" placeholder="Director Christopher Nolan">{{ authors }}</textarea>
+                </div>
+                <div>
+                    <h3>Actors</h3>
+                    <textarea name="actors" placeholder="Emma Watson">{{ actors }}</textarea>
+                </div>
+                <div>
+                    <h3>Tags:
+                        {% for tag in tags %}
+                            <label class="checkbox-cont">
+                                {{ tag }}
+                                <input type="checkbox" name="selectedTags" value="{{ tag }}"
+                                       {% if tag in checked_tags %}checked {% endif %}>
+                                <span class="checkmark"></span>
+                            </label>
+                        {% endfor %}
+                    </h3>
+                </div>
+            </div>
+            <div class="desc-right">
+                <div>
+                    <img id="imagePreview" alt="Uploaded image" style="display: none;">
+                    <input type="text" name="uploaded_image" accept="image/*" hidden>
+                </div>
+                <div class="img-input">
+                    <input type="file" id="imageUpload" name="uploaded_image" value="uploaded_image" accept="image/*">
+                </div>
+
+                <h3 style="padding: 0 37%; text-align: left">
+                    <label class="checkbox-cont">Post public
+                        <input type="checkbox" name="public" {% if public == 'True' %}checked{% endif %}>
+                        <span class="checkmark"></span>
+                    </label>
+                </h3>
+
+                {% with errors = get_flashed_messages(category_filter=['error']) %}
+                {% for error in errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+                {% endwith %}
+
+                <script src="{{ url_for('static', filename='js/image.js') }}"></script>
+            </div>
+        </form>
+    </div>
+{% endblock %}

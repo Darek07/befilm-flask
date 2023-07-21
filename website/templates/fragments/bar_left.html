@@ -1,0 +1,41 @@
+<div class="left-bar">
+    <nav>
+        <ul>
+            <li class="chosen">{{ chosen }}</li>
+            {% if current_user.is_authenticated %}
+                {% if chosen != 'Watched' %}
+                    <li><a href="{{ url_for('categories.watched') }}">Watched</a></li>
+                {% endif %}
+                {% if chosen != 'To Watch' %}
+                    <li><a href="{{ url_for('categories.to_watch') }}">To Watch</a></li>
+                {% endif %}
+                {% if chosen != 'Favorite' %}
+                    <li><a href="{{ url_for('categories.favorite') }}">Favorite</a></li>
+                {% endif %}
+                {% if chosen != 'Public' %}
+                    <li><a href="{{ url_for('categories.public') }}">Public</a></li>
+                {% endif %}
+                {% if chosen != 'Admin Panel' and current_user.admin %}
+                    <li><a href="{{ url_for('admin.panel') }}">Admin Panel</a></li>
+                {% endif %}
+            {% else %}
+                {% if chosen != 'Ratings' %}
+                    <li><a href="{{ url_for('views.ratings') }}">Ratings</a></li>
+                {% endif %}
+                {% if chosen != 'Public' %}
+                    <li><a href="{{ url_for('views.blog') }}">Public</a></li>
+                {% endif %}
+            {% endif %}
+            </ul>
+    </nav>
+
+    {% if current_user.is_authenticated %}
+        <footer>
+            {% if chosen == 'New Movie' %}
+                <button form="new-movie" name="submit" type="submit">Save</button>
+            {% else %}
+                <a href="{{ url_for('movies.new') }}">New</a>
+            {% endif %}
+        </footer>
+    {% endif %}
+</div>

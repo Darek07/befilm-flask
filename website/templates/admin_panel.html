@@ -1,0 +1,12 @@
+{% extends 'records.html' %}
+
+{% block title %}: Admin Panel{% endblock %}
+
+{% block content %}
+    <div id="admin-panel">
+        <a href="{{ url_for('admin.reports') }}" class="btn">Look Report History</a>
+        <a href="{{ url_for('admin.blocked') }}" class="btn">Look Blocked Users</a>
+        <a href="{{ url_for('admin.add') }}" class="btn">Add admin</a>
+        <a href="{{ url_for('admin.create_report') }}" class="btn">Create report</a>
+    </div>
+{% endblock %}

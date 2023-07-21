@@ -1,0 +1,30 @@
+{% extends 'records.html' %}
+
+{% block title %}: Create Report{% endblock %}
+
+{% block content %}
+    <div class="film">
+        <div class="desc-left">
+            <h1>{{ title }}</h1>
+            <h3>Created by @{{ nickname }}</h3>
+            <h3>Reports: {{ reports }}</h3>
+            <form method="post">
+                <h3>Report description:</h3>
+                <input name="nickname" value="{{ nickname }}" hidden>
+                <input name="title" value="{{ title }}" hidden>
+                <textarea name="description" placeholder="Write report description"></textarea><br>
+                <input name="submit" type="submit" value="Delete record">
+                <input name="submit" type="submit" value="Block user">
+            </form>
+            {% with errors = get_flashed_messages(category_filter=['error']) %}
+            {% for error in errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+            {% endwith %}
+        </div>
+        <div class="desc-right">
+            <a href="{{ url_for('admin.reports') }}" class="btn">Look Report History</a>
+            <a href="{{ url_for('admin.blocked') }}" class="btn">Look Blocked Users</a>
+        </div>
+    </div>
+{% endblock %}

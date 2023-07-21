@@ -1,0 +1,508 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #25274D;
+    /*color: #464866;*/
+    /*color: #AAABB8;*/
+    /*color: #2E9CCA;*/
+    /*color: #29648A;*/
+    color: #FFFFED;
+}
+
+h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 23px;
+}
+
+h4 {
+    font-size: 20px;
+    padding-left: 20px;
+    margin: 0;
+}
+
+p {
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+button {
+    color: #FFFFFF;
+    background-color: #6FC09B;
+    font-size: 1.0em;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    background-color: #cccccc;
+    padding: 12px 20px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+input[type=submit] {
+    background-color: #6FC09B;
+    border: none;
+    /*color: white;*/
+    padding: 16px 32px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    opacity: 0.9;
+}
+
+textarea {
+    resize: none;
+    width: 400px;
+    height: 100px;
+    background-color: #cccccc;
+    padding: 12px 20px;
+    margin: 15px 0;
+    border-radius: 6px;
+}
+
+.container {
+    margin: 0 20%;
+}
+
+.main {
+    text-align: center;
+}
+
+.back {
+    background: url('../images/back.jpg') no-repeat center top / cover;
+    height: 100vh;
+}
+
+.main h1 {
+    padding-top: 20%;
+    font-size: 90px;
+}
+
+.main h3 {
+    margin: 10% 0;
+    font-size: 3em;
+}
+
+.login-form {
+    margin-left: 100px;
+    float: left;
+    width: 200px;
+    display: inline-block;
+}
+
+.right {
+    float:right;
+}
+
+.right a {
+    display: block;
+    border-radius: 6px;
+    border: 2px solid #ccc;
+    padding: 14px 60px;
+    margin-right: 100px;
+}
+
+.right a:hover {
+    background-color: #464866;
+}
+
+.btn {
+    display: inline-block;
+    /*background-color: #FF4A1C;*/
+    /*background-color: #6FC09B;*/
+    /*background-color: #56f5b6;*/
+    border: 2px solid #56f5b6;
+    padding: 14px 25px;
+    text-align: center;
+    font-size: 16px;
+    margin-left: 20px;
+    opacity: 0.9;
+    transition: background-color 300ms;
+}
+
+.btn:hover {
+    background-color: #56f5b6;
+    color: black;
+}
+
+
+.left-bar {
+    top: 82px;
+    right: auto;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+   /*border-right: 2px solid #ccc;*/
+    text-align: center;
+    /*padding-top: 100px;*/
+    font-size: 1.4em;
+    background-color: #464866;
+}
+
+.left-bar li > a {
+    display: block;
+    padding: 24px 20px;
+    /*border-bottom: 2px solid #ccc;*/
+    transition: background-color 0.5s;
+}
+
+.left-bar li > a:hover {
+    background-color: #25274D;
+}
+
+/*.left-bar ul {*/
+/*    border-top: 2px solid #ccc;*/
+/*}*/
+
+.left-bar footer > a, button {
+    box-sizing: border-box;
+    width: 250px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 24px 20px;
+    /*border-top: 2px solid #ccc;*/
+    transition: background-color 0.5s;
+}
+
+.left-bar footer > a:hover, button:hover {
+    background-color: #25274D;
+}
+
+.chosen {
+    padding: 24px 20px;
+    /*border-bottom: 2px solid #ccc;*/
+    background-color: #29648A;
+    line-height: calc(100px + 20px);
+    font-size: 1.5em;
+}
+
+.chosen a {
+    font-size: 1.5em;
+}
+
+
+#top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding-left: 20%;
+    /*border-bottom: 2px solid #ccc;*/
+    line-height: 80px;
+    background-color: #29648A;
+    z-index: 1;
+}
+
+#top-bar-left {
+    color: #FFFFED;
+    font-size: 2.5em;
+}
+
+#top-bar-right {
+    position: fixed;
+    right: 3%;
+    font-size: 1.3em;
+    transition: font-size 0.5s;
+}
+
+#top-bar-right:hover {
+    font-size: 1.5em;
+}
+
+
+.content {
+    margin-top: calc(80px + 2px);
+    margin-left: calc(250px + 2px);
+    z-index: 0;
+}
+
+.vertical-center {
+    display: flex;
+    justify-content: center;
+    padding: 300px 240px;
+}
+
+.note {
+    margin: 50px 150px;
+    padding: 30px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    position: relative;
+    top: 50px;
+}
+
+.note > ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
+    color: #AAABB8;
+}
+
+.note .title {
+    color: #FFFFED;
+}
+
+.note > p {
+    display: inline-block;
+    font-size: 20px;
+    width: 55%;
+    margin: 20px 0;
+}
+
+.note > div {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 20px;
+}
+
+/*.hovered > img {*/
+/*    margin: 40px;*/
+/*    width: 35%;*/
+/*    float: right;*/
+/*}*/
+
+/*.hovered > div {*/
+/*    position: static;*/
+/*    margin: 20px;*/
+/*    width: 55%;*/
+/*}*/
+
+/*.hovered .btn {*/
+/*    font-size: 20px;*/
+/*    float: right;*/
+/*    margin-right: calc(40px + 80px);*/
+/*    margin-top: 30px;*/
+/*    padding: 14px 45px;*/
+/*}*/
+
+.film {
+    display: flex;
+    margin: 120px 0 20px 100px;
+}
+
+.desc-left {
+    float: left;
+    flex: 50%;
+    display: inline-block;
+}
+
+.desc-left h1, h3, p {
+    margin: 20px 0;
+}
+
+.desc-left p {
+    line-height: 1.5em;
+}
+
+.desc-right {
+    float: left;
+    flex: 50%;
+    margin-right: 100px;
+}
+
+.desc-right > img {
+    margin: 40px;
+    width: 100%;
+}
+
+.desc-right > .img-input {
+    margin-left: 70px;
+}
+
+.desc-right h3 {
+    margin: 25px 0;
+    text-align: center;
+}
+
+.new-title {
+    width: 300px;
+    height: 50px;
+}
+
+
+.checkbox-cont {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-cont input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 20%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-cont:hover .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-cont input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-cont input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-cont .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.edit_icon {
+    float: right;
+}
+
+.likes {
+    background-color: transparent !important;
+}
+
+#like1 {
+    display: inline-block;
+    position: fixed;
+    right: 140px;
+    bottom: 40px;
+}
+
+#like2 {
+    display: inline-block;
+    position: fixed;
+    right: 60px;
+    bottom: 40px;
+}
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input[type="text"] {
+    font-size: 18px;
+    border-radius: 15px;
+    flex-grow: 1;
+    margin: 0 300px;
+    position: relative;
+    top: 40px;
+}
+
+#admin-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#admin-panel a {
+    font-size: 25px;
+    margin: 20px 0;
+    position: relative;
+    top: 100px;
+}
+
+#users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#users .nickname-box {
+    font-size: 25px;
+    width: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    top: 50px;
+    display: block;
+}
+
+#users .nickname-box:hover {
+    background-color: #464866;
+}
+
+#blocked {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 40px;
+}
+
+.img-like1 {
+    background: url("../images/like1.png") no-repeat left; background-size: 70px;
+}
+
+.img-liked1 {
+    background: url("../images/liked1.png") no-repeat left; background-size: 70px;
+}
+
+.img-like2 {
+    background: url("../images/like2.png") no-repeat left; background-size: 70px;
+}
+
+.img-liked2 {
+    background: url("../images/liked2.png") no-repeat left; background-size: 70px;
+}
+
+.text-danger {
+    color: #ff0000;
+}

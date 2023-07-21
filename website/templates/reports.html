@@ -1,0 +1,34 @@
+{% extends 'records.html' %}
+
+{% block title %}: Report History{% endblock %}
+
+{% block content %}
+    {% if not reports %}
+        <div class="vertical-center">
+            {% if chosen == 'Report History' %}
+                <h1>There are no reports yet.</h1>
+            {% else %}
+                <h1>There are no blocked users yet.</h1>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% for report in reports %}
+        <div class="note">
+            <ul>
+                <li class="title">
+                    {{ report.movie_title[:40] + ('...' if report.movie_title|length >= 40 else '') }}
+                </li>
+                <li>{{ report.user.nickname }}</li>
+                <li>
+                    <form method="post" action="{{ url_for('admin.blocked') }}">
+                        <input name="block" type="submit" value="{{ 'Unblock' if report.block_user else 'Block' }}">
+                        <input name="nickname" value="{{ report.user.nickname }}" hidden>
+                        <input name="title" value="{{ report.movie_title }}" hidden>
+                    </form>
+                </li>
+            </ul>
+            <p>{{ report.description }}</p>
+            <div>{{ report.date_time }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}

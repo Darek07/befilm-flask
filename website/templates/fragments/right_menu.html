@@ -1,0 +1,12 @@
+<nav class="right">
+    <ul>
+        {% if login %}
+            <li><a href="{{ url_for('auth.register') }}">Sign up</a></li>
+        {% else %}
+            <li><a href="{{ url_for('auth.login') }}">Log in</a></li>
+        {% endif %}
+        <li><a href="{{ url_for('views.index') }}">Main page</a></li>
+        <li><a href="{{ url_for('views.blog') }}">Film blog</a></li>
+        <li><a href="{{ url_for('views.ratings') }}">Ratings</a></li>
+    </ul>
+</nav>

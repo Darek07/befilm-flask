@@ -1,0 +1,75 @@
+{% extends 'records.html' %}
+
+{% block title %}: Movie{% endblock %}
+
+{% block content %}
+    <div class="film">
+        <div class="desc-left">
+            <h1>{{ movie.title }}</h1>
+            <h3>Premiere: {{ movie.premiere }}</h3>
+            <h3>Country: {{ movie.country }}</h3>
+            <h3>Genre: {{ movie.genre.name }}</h3>
+            <p> {{ movie.description }}</p>
+
+            {% if movie.authors %}
+                <h3>Authors</h3>
+                {% for author in movie.authors %}
+                    <h4>{{ author.role }} {{ author.name }} {{ author.surname }}</h4>
+                {% endfor %}
+            {% endif %}
+
+            {% if movie.actors %}
+                <h3>Actors</h3>
+                {% for actor in movie.actors %}
+                    <h4>{{ actor.name }} {{ actor.surname }}</h4>
+                {% endfor %}
+            {% endif %}
+
+            {% if movie.tags %}
+                <h3>Tags</h3>
+                {% for tag in movie.tags %}
+                    <h4>#{{ tag.name }}</h4>
+                {% endfor %}
+            {% endif %}
+
+            <h1></h1>
+            {% if current_user.nickname == movie.user.nickname %}
+                <form method="post" action="{{ url_for('movies.delete', nickname=movie.user.nickname, title=movie.title) }}">
+                    <input name="delete" type="submit" value="Delete this record">
+                </form>
+            {% endif %}
+            <h1></h1>
+
+            {% if movie.is_public and current_user.admin and current_user.nickname != movie.user.nickname %}
+                <a href="{{ url_for('admin.reports') }}" class="btn">Report history</a>
+                <a href="{{ url_for('admin.create_report', title=movie.title, nickname=movie.user.nickname) }}" class="btn">
+                    Create report
+                </a>
+            {% endif %}
+        </div>
+        <div class="desc-right">
+            {% if movie.image_path and path.exists('uploads/' + movie.image_path) %}
+                <img src="{{ url_for('static', filename='uploads/' + movie.image_path) }}">
+            {% endif %}
+
+            <h3>
+                Posted {{ 'publicly' if movie.is_public else 'privately' }}
+                by {{ 'you' if current_user.nickname == movie.user.nickname else movie.user.nickname }}
+            </h3>
+
+            {% if movie.is_public %}
+                <h3>Likes: {{ likes }}</h3>
+                {% if current_user != movie.user %}
+                    <form method="post">
+                        <label id="like1" class="{{ 'img-liked1' if liked1 else 'img-like1' }}">
+                            <input class="likes" type="submit" name="like1" value=""/>
+                        </label>
+                        <label id="like2" class="{{ 'img-liked2' if liked2 else 'img-like2' }}">
+                            <input class="likes" type="submit" name="like2" value=""/>
+                        </label>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

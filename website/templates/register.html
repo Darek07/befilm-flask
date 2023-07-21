@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block title %}: Sign up{% endblock %}
+
+{% block body %}
+    <div class="container main">
+        <h1>BeFilm</h1>
+        {% if fail %}
+            <div>Username or email already exists.</div>
+        {% endif %}
+        {% include "fragments/form_register.html" %}
+        {% include "fragments/right_menu.html" %}
+    </div>
+{% endblock %}

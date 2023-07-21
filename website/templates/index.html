@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeFilm{% block title %}{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    {% block body %}
+        <div class="back">
+            <main class="container main">
+                <h1>BeFilm</h1>
+                <h3>Collect all your films in one place</h3>
+                <a href="{{ url_for('auth.login') }}" class="btn">Let's start!</a>
+            </main>
+        </div>
+    {% endblock %}
+</body>
+</html>
